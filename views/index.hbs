@@ -1,0 +1,48 @@
+<h2 class="my-5">Person Cards</h2>
+
+{{#if cards.length}} 
+    <div class="head-group w-100 d-flex">
+        <div class="w-20 d-flex justify-content-start">
+            <span>Full Name</span>
+        </div>
+        <div class="w-20 d-flex justify-content-center">
+            <span>Age</span>
+        </div>
+        <div class="w-20 d-flex justify-content-center">
+            <span>Date of birth</span>
+        </div>
+        <div class="w-20 d-flex justify-content-center">
+            <span>Country of birth</span>
+        </div>
+    </div>
+    <ul class="list-group list-group-flush">
+        {{#each cards}}
+            <li class="list-group-item">
+                <form action='completed' method='POST'>
+                    <label class='w-100 d-flex '>
+                        <div class="w-20 d-flex justify-content-start">
+                            <span>{{ name }} {{ surname }}</span>
+                        </div>
+                        <div class="w-20 d-flex justify-content-center">
+                            <span>{{ age }}</span>
+                        </div>
+                        <div class="w-20 d-flex justify-content-center">
+                            <span>{{ full_date }}</span>
+                        </div>
+                        <div class="w-20 d-flex justify-content-center">
+                            <span>{{ country }}</span>
+                        </div>
+
+                        <input type='hidden' value='{{_id}}' name='id' />
+                        
+                        <div class="w-20 d-flex justify-content-end">
+                            <button type='submit' class='btn btn-danger btn-sm'>Delete</button>
+                        </div>
+                    </label>
+                </form>
+            </li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>No cards at all!</p>
+{{/if}}
